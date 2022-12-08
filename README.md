@@ -24,4 +24,4 @@ fi
 unit="$(eco $1|sed -e 's/[-[numbs]]*//g' | tr '[:lower:]' '[:upper:]' )"
 temp="$(eco $1|sed -e 's/[^-[:digit:]]*//g')"
 ```
-
+![Script](images/part_2.png)
