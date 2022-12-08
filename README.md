@@ -35,4 +35,40 @@ Using the man page for journalctl write a journalctl command that does the follo
 - output in a nice pretty json.
 ![Script](images/part_3.png)
 
+#### PART 4
+Finding users in the system with UID between 1000 and 5000 with USERNAME, UID and SHELL
+
+```
+#!/bin/bash
+
+# Get a list of all the users on the system
+users=$(cut -d: -f1 /etc/passwd)
+echo 'Regular users on the system are:'
+
+# Loop through the list of users.
+for user in $users
+do
+        uid=$(id -u $user)
+        shell=$(grep "^$user:" /etc/passwd | cut -d: -f7)
+        if [ $uid -ge 1000 ] && [ $uid -le 5000 ];then
+                # Print the username and UID
+                echo "$user $uid $shell"
+        fi
+done
+
+echo 'Users currently logged in are:'
+# Get a list of all the logged in users
+logged_in_users=$(who)
+
+# Loop through the list of logged in users and print their names
+for user in $logged_in_users
+do
+  # Extract the username from the who output
+  username=$(echo $user |awk '{print $0}')
+
+  # Print the username
+  echo $username
+done
+```
+
 #### PART 5
