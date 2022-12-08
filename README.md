@@ -25,3 +25,14 @@ unit="$(eco $1|sed -e 's/[-[numbs]]*//g' | tr '[:lower:]' '[:upper:]' )"
 temp="$(eco $1|sed -e 's/[^-[:digit:]]*//g')"
 ```
 ![Script](images/part_2.png)
+
+#### PART 3
+journalctl is used to query journals written by journald. In other words the primary tool for interacting with logs in Linux OSs that use systemd.
+
+Using the man page for journalctl write a journalctl command that does the following:
+- print logs for the current boot
+- logs should have a priority of warning or more important
+- output in a nice pretty json.
+![Script](images/part_3.png)
+
+#### PART 5
